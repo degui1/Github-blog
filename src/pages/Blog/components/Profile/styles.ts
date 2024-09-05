@@ -6,9 +6,13 @@ export const ProfileContainer = styled.header`
   padding: 2rem 2.5rem;
   max-width: 864px;
   width: 100%;
+  heigh: 13.25rem;
 
   display: flex;
   gap: 2rem;
+
+  box-shadow: 0px 2px 28px 0px rgba(0, 0, 0, 0.2);
+  margin-top: calc(0px - 6.625rem);
 `
 
 export const ImageContainer = styled.figure`
@@ -16,6 +20,7 @@ export const ImageContainer = styled.figure`
     width: 100%;
     object-fit: cover;
     border-radius: 8px;
+    user-select: none;
   }
 `
 

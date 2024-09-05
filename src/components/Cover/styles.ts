@@ -11,4 +11,6 @@ export const CoverContainer = styled.header`
     width: 100%;
     object-fit: cover;
   }
+
+  user-select: none;
 `
