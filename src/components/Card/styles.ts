@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { device } from '../../styles/devices'
 
 export const CardContainer = styled.section`
   max-width: 416px;
@@ -40,5 +41,17 @@ export const CardContainer = styled.section`
 
   &:hover {
     border: 2px solid ${(props) => props.theme['base-label']};
+  }
+
+  @media ${device.laptop} {
+    max-width: 100vw;
+  }
+
+  @media ${device.tablet} {
+    div {
+      span {
+        width: 20vw;
+      }
+    }
   }
 `

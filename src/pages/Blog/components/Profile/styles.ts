@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { device } from '../../../../styles/devices'
 
 export const ProfileContainer = styled.header`
   background-color: ${(props) => props.theme['base-profile']};
@@ -13,6 +14,13 @@ export const ProfileContainer = styled.header`
 
   box-shadow: 0px 2px 28px 0px rgba(0, 0, 0, 0.2);
   margin-top: calc(0px - 6.625rem);
+
+  @media ${device.laptop} {
+    margin-top: 0;
+    border-radius: 0px;
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 export const ImageContainer = styled.figure`
@@ -21,6 +29,10 @@ export const ImageContainer = styled.figure`
     object-fit: cover;
     border-radius: 8px;
     user-select: none;
+  }
+
+  @media ${device.laptop} {
+    max-width: 10rem;
   }
 `
 

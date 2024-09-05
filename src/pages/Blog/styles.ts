@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { device } from '../../styles/devices'
 
 export const BlogContainer = styled.div`
   display: flex;
@@ -10,7 +11,6 @@ export const PostsContainer = styled.main`
   display: flex;
   align-items: center;
   flex-direction: column;
-  max-width: 864px;
   width: 100%;
   margin-top: 4.5rem;
   gap: 2rem;
@@ -45,10 +45,22 @@ export const PostsContainer = styled.main`
       }
     }
   }
+
+  @media ${device.laptopL} {
+    padding: 0 1rem;
+  }
 `
 
 export const ArticleContainer = styled.article`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 2rem;
+
+  @media ${device.laptop} {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media ${device.tablet} {
+    grid-template-columns: 1fr;
+  }
 `
