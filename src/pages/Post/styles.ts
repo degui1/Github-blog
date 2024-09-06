@@ -7,6 +7,9 @@ export const PostContainer = styled.div`
 `
 
 export const ContentContainer = styled.main`
-  display: flex;
   padding: 2.5rem 2rem;
+  max-width: 864px;
+  width: 100%;
+  white-space: pre-wrap;
+  overflow: hidden;
 `

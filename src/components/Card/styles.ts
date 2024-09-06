@@ -16,9 +16,9 @@ export const CardContainer = styled.section`
   border: 2px solid transparent;
 
   cursor: pointer;
+  transition: border 0.2s;
 
   div {
-    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -32,7 +32,6 @@ export const CardContainer = styled.section`
     }
 
     span {
-      width: 20%;
       font-size: 0.875rem;
       color: ${(props) => props.theme['base-span']};
       font-weight: regular;
@@ -45,13 +44,5 @@ export const CardContainer = styled.section`
 
   @media ${device.laptop} {
     max-width: 100vw;
-  }
-
-  @media ${device.tablet} {
-    div {
-      span {
-        width: 20vw;
-      }
-    }
   }
 `

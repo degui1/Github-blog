@@ -1,18 +1,39 @@
+import { useNavigate } from 'react-router'
 import { CardContainer } from './styles'
+import { limitString } from '../../utils/limitString'
+import { formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
 
-export function Card() {
+interface CardProps {
+  post: {
+    title: string
+    body: string
+    created_at: string
+    number: string
+  }
+}
+
+export function Card({
+  post: { body, created_at: CreatedAt, number, title },
+}: CardProps) {
+  const navigate = useNavigate()
+
+  const distanceFromNow = formatDistanceToNow(CreatedAt, {
+    locale: ptBR,
+    addSuffix: true,
+  })
+
   return (
-    <CardContainer>
+    <CardContainer
+      onClick={() => {
+        navigate(`/post/${number}`)
+      }}
+    >
       <div>
-        <h2>JavaScript data types and data structures</h2>
-        <span>há 1 dia</span>
+        <h2>{title}</h2>
+        <span>{distanceFromNow}</span>
       </div>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam odio
-        velit totam. Maiores ab vel impedit consequatur optio praesentium
-        expedita, minima debitis odio rem nesciunt vero temporibus excepturi
-        voluptatum minus!
-      </p>
+      <p>{limitString(body)}</p>
     </CardContainer>
   )
 }

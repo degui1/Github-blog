@@ -11,8 +11,48 @@ import {
   faUserGroup,
 } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { useEffect, useState } from 'react'
+import { api } from '../../../../api/axios'
+
+type ProfileInformation = {
+  name: string
+  bio: string
+  avatarURL: string
+  company: string
+  username: string
+  followers: number
+  link_github: string
+}
 
 export function Profile() {
+  const [profileInformation, setProfileInformation] =
+    useState<ProfileInformation>({
+      username: '',
+      avatarURL: '',
+      bio: '',
+      company: '',
+      followers: 0,
+      name: '',
+      link_github: '',
+    })
+  useEffect(() => {
+    const fn = async () => {
+      const profileResponse = await api.get('/users/degui1')
+
+      setProfileInformation({
+        avatarURL: profileResponse.data.avatar_url,
+        bio: profileResponse.data.bio,
+        company: profileResponse.data.company,
+        followers: profileResponse.data.followers,
+        name: profileResponse.data.name,
+        username: profileResponse.data.login,
+        link_github: profileResponse.data.html_url,
+      })
+    }
+
+    fn()
+  }, [])
+
   return (
     <ProfileContainer>
       <ImageContainer>
@@ -21,34 +61,33 @@ export function Profile() {
 
       <DetailsContainer>
         <section>
-          <h1>Guilherme Goncalves</h1>
+          <h1>{profileInformation.name}</h1>
 
-          <a href="">
+          <a
+            href={profileInformation.link_github}
+            target="_blank"
+            rel="noreferrer"
+          >
             GITHUB <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
           </a>
         </section>
 
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Et eligendi
-          voluptates nulla dolorum, excepturi quaerat est rem porro molestiae
-          reprehenderit, sunt tempora animi inventore illo illum quia maiores
-          labore aliquid.
-        </p>
+        <p>{profileInformation.bio}</p>
 
         <IconsContainer>
           <span>
             <FontAwesomeIcon icon={faGithub} />
-            degui1
+            {profileInformation.username}
           </span>
 
           <span>
             <FontAwesomeIcon icon={faBuilding} />
-            Rocketseat
+            {profileInformation.company}
           </span>
 
           <span>
             <FontAwesomeIcon icon={faUserGroup} />
-            degui1
+            {profileInformation.followers} seguidores
           </span>
         </IconsContainer>
       </DetailsContainer>

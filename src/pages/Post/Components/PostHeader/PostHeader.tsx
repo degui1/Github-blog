@@ -1,15 +1,29 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faArrowUpRightFromSquare,
-  faBuilding,
+  faCalendarDay,
   faChevronLeft,
-  faUserGroup,
+  faComment,
 } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { DetailsContainer, IconsContainer, PostHeaderContainer } from './styles'
 import { NavLink } from 'react-router-dom'
 
-export function PostHeader() {
+interface PostHeaderProps {
+  githubURL: string
+  title: string
+  username: string
+  createdAt: string
+  comments: number
+}
+
+export function PostHeader({
+  comments,
+  createdAt,
+  githubURL,
+  title,
+  username,
+}: PostHeaderProps) {
   return (
     <PostHeaderContainer>
       <nav>
@@ -17,28 +31,28 @@ export function PostHeader() {
           <FontAwesomeIcon icon={faChevronLeft} />
           VOLTAR
         </NavLink>
-        <a href="">
+        <a href={githubURL}>
           GITHUB <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
         </a>
       </nav>
 
       <DetailsContainer>
-        <h1>JavaScript data types and data structure</h1>
+        <h1>{title}</h1>
 
         <IconsContainer>
           <span>
             <FontAwesomeIcon icon={faGithub} />
-            degui1
+            {username}
           </span>
 
           <span>
-            <FontAwesomeIcon icon={faBuilding} />
-            Rocketseat
+            <FontAwesomeIcon icon={faCalendarDay} />
+            {createdAt}
           </span>
 
           <span>
-            <FontAwesomeIcon icon={faUserGroup} />
-            degui1
+            <FontAwesomeIcon icon={faComment} />
+            {comments} comentários
           </span>
         </IconsContainer>
       </DetailsContainer>

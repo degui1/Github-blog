@@ -24,6 +24,7 @@ export const ProfileContainer = styled.header`
 `
 
 export const ImageContainer = styled.figure`
+  max-width: 9.45rem;
   img {
     width: 100%;
     object-fit: cover;

@@ -21,4 +21,19 @@ export const GlobalStyle = createGlobalStyle`
   body, input, textarea, button {
     font: 400 1rem Nunito, sans-serif;
   }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+    background-color: ${(props) => props.theme['base-background']};
+  }
+ 
+
+  ::-webkit-scrollbar-thumb {
+    background: ${(props) => props.theme['base-label']}; 
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${(props) => props.theme['base-span']}; 
+  }
 `
