@@ -6,7 +6,7 @@ The content of these posts is created in markdown and converted to HTML within t
 
 Github Blog is completely responsive, access it from your cell phone, tablet or computer.
 
-### 👉 Link to access: [link](https://github.com/degui1/Github-blog/edit/main/README.md)
+### 👉 Link to access: [link](https://github-blog-blue-seven.vercel.app/)
 
 ## ▶ How to start project
 
